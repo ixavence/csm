@@ -21,7 +21,7 @@
 ---
 
 ## 🎨 Lukas Schneider  
-**Role:** UI/UX Designer  
+**Role:** UX Designer  
 **Contributions:**  
 - Designed visual layout and styling concepts  
 - Created mockups and improved user interface flow  
@@ -32,7 +32,5 @@
 ## 🧪 Jakub Pietrzak  
 **Role:** Quality Assurance Tester  
 **Contributions:**  
-- Focused on UX testing and user-flow validation  
-- Helped identify UI/UX bugs and inconsistencies  
 - Provided detailed feedback for early builds  
 - Participated in test case creation and review
