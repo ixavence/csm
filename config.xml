@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ixa>
+    <csm>
+        <title>Privacy Settings</title>
+        <text>This site collects data to improve user experience, analyze traffic, and provide personalized content.</text>
+        <policy-link visible="true">https://example.com/privacy-policy</policy-link>
+        <terms-link visible="true">https://example.com/terms</terms-link>
+
+        <buttons>
+            <acc visible="false">Accept</acc>
+            <all visible="true">Accept all</all>
+            <den visible="true">Deny all</den>
+            <man visible="true">Manage</man>
+        </buttons>
+        
+        <manage>manage.xml</manage>
+        
+        <!-- Settings -->
+        <theme mode="auto"></theme>
+        <delay time="0"></delay>
+    </csm>
+</ixa>

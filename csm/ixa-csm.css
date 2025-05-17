@@ -1,0 +1,978 @@
+/**
+ * IXA CSM - Modern Consent Manager
+ * Version: 1.3.0
+ * Enhanced with premium visual design, animations, and effects
+ */
+
+/* Base styles */
+.ixa-csm {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120%);
+    width: 90%;
+    max-width: 480px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.18), 0 5px 15px rgba(0, 0, 0, 0.05);
+    z-index: 9999;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ixa-csm-visible {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Content */
+.ixa-csm-content {
+    padding: 32px;
+    position: relative;
+}
+
+.ixa-csm-title {
+    margin: 0 0 18px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    transition: color 0.3s ease;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+.ixa-csm-text {
+    margin: 0 0 24px 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4a4a4a;
+    transition: color 0.3s ease;
+}
+
+/* Links */
+.ixa-csm-links {
+    margin-bottom: 28px;
+    transition: opacity 0.3s ease;
+}
+
+.ixa-csm-link {
+    display: inline-block;
+    margin-right: 24px;
+    font-size: 14px;
+    color: #0066ff;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+    font-weight: 500;
+}
+
+.ixa-csm-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #0066ff;
+    transition: width 0.3s ease;
+}
+
+.ixa-csm-link:hover {
+    color: #0052cc;
+}
+
+.ixa-csm-link:hover:after {
+    width: 100%;
+}
+
+/* Buttons */
+.ixa-csm-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ixa-csm-button {
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.01em;
+}
+
+.ixa-csm-button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.ixa-csm-button:hover:before {
+    width: 300px;
+    height: 300px;
+}
+
+.ixa-csm-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ixa-csm-button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ixa-csm-button-accept {
+    background-color: #f5f5f7;
+    color: #333;
+}
+
+.ixa-csm-button-accept:hover {
+    background-color: #e8e8e8;
+}
+
+.ixa-csm-button-accept-all {
+    background-color: #0066ff;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 102, 255, 0.25);
+}
+
+.ixa-csm-button-accept-all:hover {
+    background-color: #0052cc;
+    box-shadow: 0 8px 20px rgba(0, 102, 255, 0.35);
+}
+
+.ixa-csm-button-deny-all {
+    background-color: #f5f5f7;
+    color: #333;
+}
+
+.ixa-csm-button-deny-all:hover {
+    background-color: #e8e8e8;
+}
+
+.ixa-csm-button-manage {
+    background-color: transparent;
+    color: #0066ff;
+    text-decoration: none;
+    padding: 13px 0;
+    position: relative;
+    font-weight: 500;
+}
+
+.ixa-csm-button-manage:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 8px;
+    left: 0;
+    background-color: #0066ff;
+    transition: width 0.3s ease;
+}
+
+.ixa-csm-button-manage:hover {
+    color: #0052cc;
+    box-shadow: none;
+    transform: none;
+}
+
+.ixa-csm-button-manage:hover:after {
+    width: 100%;
+}
+
+.ixa-csm-button-manage:before {
+    display: none;
+}
+
+/* Watermark */
+.ixa-csm-watermark {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    margin-top: 24px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+    position: relative;
+    padding-left: 0;
+    display: inline-block;
+}
+
+.ixa-csm-watermark:before {
+    display: none;
+}
+
+.ixa-csm-watermark span {
+    font-weight: 600;
+    background: linear-gradient(135deg, #0066ff, #5e17eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+}
+
+.ixa-csm-watermark:hover {
+    opacity: 1;
+}
+
+.ixa-csm-watermark:hover:before {
+    transform: translateY(-50%) scale(1.1);
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
+}
+
+.ixa-csm-watermark-footer {
+    margin-top: 0;
+    margin-right: 20px;
+    text-align: right;
+    position: absolute;
+    bottom: 20px;
+    left: 28px;
+    animation: none;
+    opacity: 0.8;
+}
+
+/* Management panel */
+.ixa-csm-manage-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: 90%;
+    max-width: 620px;
+    max-height: 85vh;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.28), 0 10px 30px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ixa-csm-manage-panel.visible {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.ixa-csm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.ixa-csm-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ixa-csm-manage-header {
+    padding: 28px 32px;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.ixa-csm-manage-header:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 102, 255, 0.2), transparent);
+}
+
+.ixa-csm-manage-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.ixa-csm-manage-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 0;
+    line-height: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background-color: #f5f5f7;
+}
+
+.ixa-csm-manage-close:hover {
+    background-color: #e8e8e8;
+    color: #333;
+    transform: rotate(90deg);
+}
+
+.ixa-csm-manage-categories {
+    padding: 0 32px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.ixa-csm-category {
+    padding: 28px 0;
+    border-bottom: 1px solid #eaeaea;
+    transition: all 0.3s ease;
+}
+
+.ixa-csm-category:last-child {
+    border-bottom: none;
+}
+
+.ixa-csm-category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+    cursor: pointer;
+    padding: 6px 12px;
+    margin: -6px -12px 14px -12px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.ixa-csm-category-header:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.ixa-csm-category-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.01em;
+}
+
+.ixa-csm-category-header h3:before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #666;
+    border-bottom: 2px solid #666;
+    margin-right: 12px;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+}
+
+.ixa-csm-category.collapsed .ixa-csm-category-header h3:before {
+    transform: rotate(45deg);
+}
+
+.ixa-csm-category p {
+    margin: 0 0 18px 0;
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.ixa-csm-category-content {
+    max-height: 1000px;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.3s ease 0.1s;
+    opacity: 1;
+    padding-left: 24px;
+    position: relative;
+}
+
+.ixa-csm-category-content:before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #0066ff20, transparent);
+    border-radius: 2px;
+}
+
+.ixa-csm-category.collapsed .ixa-csm-category-content {
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.2s ease;
+}
+
+.ixa-csm-services {
+    margin-top: 22px;
+}
+
+.ixa-csm-service {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #f5f5f5;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+}
+
+.ixa-csm-service:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.ixa-csm-service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.ixa-csm-service-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.ixa-csm-service p {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.ixa-csm-service-provider {
+    font-size: 13px !important;
+    color: #888 !important;
+    display: inline-block;
+    background-color: #f5f5f7;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 4px !important;
+}
+
+.ixa-csm-service-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #0066ff;
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.ixa-csm-service-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -1px;
+    left: 0;
+    background-color: #0066ff;
+    transition: width 0.3s ease;
+}
+
+.ixa-csm-service-link:hover:after {
+    width: 100%;
+}
+
+.ixa-csm-manage-footer {
+    padding: 24px 32px;
+    border-top: 1px solid #eaeaea;
+    text-align: right;
+    position: relative;
+}
+
+.ixa-csm-manage-footer:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 102, 255, 0.2), transparent);
+}
+
+.ixa-csm-button-save {
+    background-color: #0066ff;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 102, 255, 0.25);
+}
+
+.ixa-csm-button-save:hover {
+    background-color: #0052cc;
+    box-shadow: 0 8px 20px rgba(0, 102, 255, 0.35);
+}
+
+/* Toggle switch */
+.ixa-csm-toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.ixa-csm-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ixa-csm-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .3s;
+    border-radius: 26px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.ixa-csm-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input:checked+.ixa-csm-slider {
+    background-color: #0066ff;
+}
+
+input:checked+.ixa-csm-slider:before {
+    background-color: white;
+}
+
+input:disabled+.ixa-csm-slider {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+input:checked+.ixa-csm-slider:before {
+    transform: translateX(24px);
+}
+
+/* Theme: Black */
+.ixa-theme-black {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ixa-theme-black .ixa-csm-title {
+    color: #fff;
+}
+
+.ixa-theme-black .ixa-csm-text {
+    color: #ddd;
+}
+
+.ixa-theme-black .ixa-csm-button-accept,
+.ixa-theme-black .ixa-csm-button-deny-all {
+    background-color: #333;
+    color: #fff;
+}
+
+.ixa-theme-black .ixa-csm-button-accept:hover,
+.ixa-theme-black .ixa-csm-button-deny-all:hover {
+    background-color: #444;
+}
+
+.ixa-theme-black .ixa-csm-manage-panel {
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ixa-theme-black .ixa-csm-manage-header {
+    border-bottom-color: #333;
+}
+
+.ixa-theme-black .ixa-csm-manage-header:after {
+    background: linear-gradient(to right, transparent, rgba(0, 102, 255, 0.3), transparent);
+}
+
+.ixa-theme-black .ixa-csm-manage-close {
+    background-color: #333;
+    color: #ddd;
+}
+
+.ixa-theme-black .ixa-csm-manage-close:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+.ixa-theme-black .ixa-csm-category {
+    border-bottom-color: #333;
+}
+
+.ixa-theme-black .ixa-csm-category-header:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.ixa-theme-black .ixa-csm-category p,
+.ixa-theme-black .ixa-csm-service p {
+    color: #bbb;
+}
+
+.ixa-theme-black .ixa-csm-service {
+    border-bottom-color: #333;
+}
+
+.ixa-theme-black .ixa-csm-service-provider {
+    background-color: #333;
+    color: #aaa !important;
+}
+
+.ixa-theme-black .ixa-csm-manage-footer {
+    border-top-color: #333;
+}
+
+.ixa-theme-black .ixa-csm-manage-footer:before {
+    background: linear-gradient(to right, transparent, rgba(0, 102, 255, 0.3), transparent);
+}
+
+.ixa-theme-black .ixa-csm-watermark {
+    color: #777;
+}
+
+.ixa-theme-black .ixa-csm-watermark:before {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+.ixa-theme-black .ixa-csm-watermark span {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ixa-theme-black .ixa-csm-category-header h3:before {
+    border-color: #999;
+}
+
+.ixa-theme-black .ixa-csm-category-content:before {
+    background: linear-gradient(to bottom, rgba(59, 130, 246, 0.3), transparent);
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+    .ixa-csm {
+        width: 95%;
+        bottom: 10px;
+    }
+
+    .ixa-csm-content {
+        padding: 24px;
+    }
+
+    .ixa-csm-buttons {
+        flex-direction: column;
+    }
+
+    .ixa-csm-button {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .ixa-csm-manage-panel {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .ixa-csm-watermark-footer {
+        position: static;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .ixa-csm-manage-header,
+    .ixa-csm-manage-footer {
+        padding: 20px 24px;
+    }
+
+    .ixa-csm-manage-categories {
+        padding: 0 24px;
+    }
+
+    .ixa-csm-category {
+        padding: 20px 0;
+    }
+}
+
+/* Auto theme detection */
+@media (prefers-color-scheme: dark) {
+    .ixa-theme-auto {
+        background-color: #1a1a1a;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .ixa-theme-auto .ixa-csm-title {
+        color: #fff;
+    }
+
+    .ixa-theme-auto .ixa-csm-text {
+        color: #ddd;
+    }
+
+    .ixa-theme-auto .ixa-csm-button-accept,
+    .ixa-theme-auto .ixa-csm-button-deny-all {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .ixa-theme-auto .ixa-csm-button-accept:hover,
+    .ixa-theme-auto .ixa-csm-button-deny-all:hover {
+        background-color: #444;
+    }
+
+    .ixa-theme-auto .ixa-csm-manage-panel {
+        background-color: #1a1a1a;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .ixa-theme-auto .ixa-csm-manage-header {
+        border-bottom-color: #333;
+    }
+
+    .ixa-theme-auto .ixa-csm-manage-header:after {
+        background: linear-gradient(to right, transparent, rgba(0, 102, 255, 0.3), transparent);
+    }
+
+    .ixa-theme-auto .ixa-csm-manage-close {
+        background-color: #333;
+        color: #ddd;
+    }
+
+    .ixa-theme-auto .ixa-csm-manage-close:hover {
+        background-color: #444;
+        color: #fff;
+    }
+
+    .ixa-theme-auto .ixa-csm-category {
+        border-bottom-color: #333;
+    }
+
+    .ixa-theme-auto .ixa-csm-category-header:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .ixa-theme-auto .ixa-csm-category p,
+    .ixa-theme-auto .ixa-csm-service p {
+        color: #bbb;
+    }
+
+    .ixa-theme-auto .ixa-csm-service {
+        border-bottom-color: #333;
+    }
+
+    .ixa-theme-auto .ixa-csm-service-provider {
+        background-color: #333;
+        color: #aaa !important;
+    }
+
+    .ixa-theme-auto .ixa-csm-manage-footer {
+        border-top-color: #333;
+    }
+
+    .ixa-theme-auto .ixa-csm-manage-footer:before {
+        background: linear-gradient(to right, transparent, rgba(0, 102, 255, 0.3), transparent);
+    }
+
+    .ixa-theme-auto .ixa-csm-watermark {
+        color: #777;
+    }
+
+    .ixa-theme-auto .ixa-csm-watermark:before {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+
+    .ixa-theme-auto .ixa-csm-watermark span {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .ixa-theme-auto .ixa-csm-category-content:before {
+        background: linear-gradient(to bottom, rgba(59, 130, 246, 0.3), transparent);
+    }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Apply animations to elements */
+.ixa-csm-title,
+.ixa-csm-text,
+.ixa-csm-links {
+    animation: slideUp 0.5s ease forwards;
+}
+
+.ixa-csm-text {
+    animation-delay: 0.1s;
+}
+
+.ixa-csm-links {
+    animation-delay: 0.2s;
+}
+
+.ixa-csm-buttons {
+    animation: slideUp 0.5s ease 0.3s forwards;
+    opacity: 0;
+}
+
+.ixa-csm-watermark:before {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* Service animations */
+.ixa-csm-service {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+.ixa-csm-service:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.ixa-csm-service:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.ixa-csm-service:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.ixa-csm-service:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.ixa-csm-service:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+/* Close button (X) */
+.ixa-csm-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    font-size: 20px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.ixa-csm-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: rotate(90deg);
+}
+
+.ixa-theme-black .ixa-csm-close {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.ixa-theme-black .ixa-csm-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}

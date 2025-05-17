@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ixa>
+    <csm-manage>
+        <category id="necessary" required="true">
+            <title>Necessary</title>
+            <description>These cookies are essential for the website to function properly and cannot be disabled.</description>
+            <service id="session">
+                <title>Session Cookies</title>
+                <description>Used to maintain your session and login status.</description>
+                <provider>Website Owner</provider>
+                <link>https://example.com/cookies/session</link>
+            </service>
+            <service id="security">
+                <title>Security Cookies</title>
+                <description>Used to ensure the security of your browsing experience.</description>
+                <provider>Website Owner</provider>
+                <link>https://example.com/cookies/security</link>
+            </service>
+        </category>
+        
+        <category id="analytics">
+            <title>Analytics</title>
+            <description>These cookies help us understand how visitors interact with our website.</description>
+            <service id="google-analytics">
+                <title>Google Analytics</title>
+                <description>Tracks website usage and performance.</description>
+                <provider>Google LLC</provider>
+                <link>https://policies.google.com/privacy</link>
+                <custom>
+                    console.log('Google Analytics enabled');
+                    // Add Google Analytics code here
+                    // Example:
+                    // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    // m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                    // })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+                    // ga('create', 'UA-XXXXX-Y', 'auto');
+                    // ga('send', 'pageview');
+                </custom>
+            </service>
+        </category>
+        
+        <category id="marketing">
+            <title>Marketing</title>
+            <description>These cookies are used to track visitors across websites to display relevant advertisements.</description>
+            <service id="facebook-pixel">
+                <title>Facebook Pixel</title>
+                <description>Tracks conversions and optimizes ads on Facebook.</description>
+                <provider>Meta Platforms, Inc.</provider>
+                <link>https://www.facebook.com/policy.php</link>
+                <custom>
+                    console.log('Facebook Pixel enabled');
+                    // Add Facebook Pixel code here
+                    // Example:
+                    // !function(f,b,e,v,n,t,s)
+                    // {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    // n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    // if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    // n.queue=[];t=b.createElement(e);t.async=!0;
+                    // t.src=v;s=b.getElementsByTagName(e)[0];
+                    // s.parentNode.insertBefore(t,s)}(window, document,'script',
+                    // 'https://connect.facebook.net/en_US/fbevents.js');
+                    // fbq('init', 'XXXXXXXXXXXXXXX');
+                    // fbq('track', 'PageView');
+                </custom>
+            </service>
+        </category>
+        
+        <category id="preferences">
+            <title>Preferences</title>
+            <description>These cookies allow the website to remember choices you make and provide enhanced functionality.</description>
+            <service id="language">
+                <title>Language Preference</title>
+                <description>Remembers your preferred language setting.</description>
+                <provider>Website Owner</provider>
+                <link>https://example.com/cookies/preferences</link>
+                <custom>
+                    console.log('Language preferences enabled');
+                </custom>
+            </service>
+        </category>
+    </csm-manage>
+</ixa>
