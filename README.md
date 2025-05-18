@@ -1,6 +1,7 @@
 # IXA CSM - Modern Consent Manager
 
 ![IXA CSM](https://host.ixavence.org/host/images/logo.png)
+[![](https://data.jsdelivr.com/v1/package/gh/ixavence/csm/badge)](https://www.jsdelivr.com/package/gh/ixavence/csm)
 
 A premium, customizable consent manager with elegant animations and modern design for websites that need to comply with privacy regulations like GDPR, CCPA, and others.
 
@@ -33,3 +34,5 @@ Add the following code to the `<head>` section of your HTML:
 
 ```html
 <link rel="stylesheet" href="csm/ixa-csm.css">
+
+
