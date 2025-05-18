@@ -615,12 +615,42 @@ const IXA_CSM = (function() {
                 category.services.forEach(service => {
                     if (consentState[service.id] && service.custom) {
                         try {
-                            eval(service.custom);
+                            // Replace the eval with proper script injection
+                            const scriptContent = service.custom;
+                            
+                            // For script tags that need to be added to head
+                            if (scriptContent.includes('<script') || scriptContent.includes('script>')) {
+                                // Create a temporary div to parse HTML
+                                const tempDiv = document.createElement('div');
+                                tempDiv.innerHTML = scriptContent;
+                                
+                                // Find and append all script elements
+                                const scriptElements = tempDiv.querySelectorAll('script');
+                                scriptElements.forEach(script => {
+                                    const newScript = document.createElement('script');
+                                    
+                                    // Copy attributes
+                                    Array.from(script.attributes).forEach(attr => {
+                                        newScript.setAttribute(attr.name, attr.value);
+                                    });
+                                    
+                                    // Copy content
+                                    newScript.textContent = script.textContent;
+                                    
+                                    // Add to document
+                                    document.head.appendChild(newScript);
+                                });
+                            } else {
+                                // For inline JavaScript that doesn't include script tags
+                                const script = document.createElement('script');
+                                script.textContent = scriptContent;
+                                document.head.appendChild(script);
+                            }
                         } catch (error) {
                             console.error('IXA CSM: Error executing custom script', error);
                         }
                     }
-                });
+                }); 
             }
         });
     }
