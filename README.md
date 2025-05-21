@@ -1,6 +1,6 @@
 # IXA CSM - Modern Consent Manager
 
-![IXA CSM](https://host.ixavence.org/host/images/logo.png)
+![IXA CSM](https://host.ixavence.org/host/images/csm.png)
 [![](https://data.jsdelivr.com/v1/package/gh/ixavence/csm/badge)](https://www.jsdelivr.com/package/gh/ixavence/csm)
 
 A premium, customizable consent manager with elegant animations and modern design for websites that need to comply with privacy regulations like GDPR, CCPA, and others.
